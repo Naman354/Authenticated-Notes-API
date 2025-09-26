@@ -1,22 +1,20 @@
+const { text } = require('express');
 const mongoose = require('mongoose')
 const userSchema = new mongoose.Schema({
-    username:{
+    name:{
         type:String,
-        unique:true,
     },
-    email:{
+    title:{
         type:String,
         required:true,
         unique:true,
     },
-    password:{
-        type:String,
-        required:true,
-    // createdBy:{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'users',            
-    // }
-        
+    content:{
+        type:String,        
+    },
+    createdBy:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',            
     }
 }, {timestamps:true});
 const User = mongoose.model('User', userSchema)
