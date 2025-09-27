@@ -4,7 +4,7 @@ async function restrictToLoggedInUserOnly(req, res, next) {
     console.log('middleware hit');
 
     // Skip middleware for login/register routes
-    if (req.path === "/user/login" || req.path === "/user") return next();
+    if (req.path === "/user/login" || req.path === "/user/register") return next();
 
     // Get JWT token from cookies
     const token = req.cookies.uid;
