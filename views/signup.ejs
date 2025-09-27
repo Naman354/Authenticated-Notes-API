@@ -4,9 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignUp</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    h2, h3 {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    input, button {
+        padding: 8px;
+        width: 200px;
+        margin: 5px 0;
+    }
+</style>
+
 </head>
 <body>
-    SIGNUP NOW
+    <h2>SIGNUP NOW</h2>
       <form action="/user" method="POST">
     <input type="text" name="username" placeholder="Name" required><br>
     <input type="email" name="email" placeholder="Email" required><br>

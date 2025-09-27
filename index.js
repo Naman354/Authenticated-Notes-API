@@ -24,6 +24,10 @@ app.set("views", path.join(__dirname, "views"));
 app.get("/", restrictToLoggedInUserOnly, async (req, res) => {
   res.render("home"); // your frontend will fetch notes via JS
 });
+app.get("/logout", (req, res) => {
+    res.clearCookie("uid"); // Clear the JWT cookie
+    res.redirect("/user/login"); // Redirect to login page
+});
 
 // Use user and notes routes
 app.use("/user", userRoute);

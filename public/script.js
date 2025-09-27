@@ -100,5 +100,12 @@ notesBody.addEventListener("click", async (e) => {
     }
 });
 
+    const logoutBtn = document.getElementById("logout-btn");
+
+    logoutBtn.addEventListener("click", () => {
+        window.location.href = "/logout"; // Simple redirect to logout route
+    });
+
+
 // Initial load
 loadNotes();

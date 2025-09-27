@@ -9,27 +9,68 @@
             font-family: Arial, sans-serif; 
             padding: 20px; 
         }
-        input, button, textarea { 
-            margin: 5px; 
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
         }
-        table { 
+
+        form#form1 {
+            max-width: 500px;
+            margin: 0 auto 40px auto; /* center horizontally */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* center elements inside form */
+        }
+
+        form#form1 h2 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        input[type="text"], textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: 1px solid #000;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #logout-btn {
+            display: block;
+            margin: 30px auto 0 auto;
+        }
+
+        table {
             border-collapse: collapse; 
             width: 100%; 
             margin-top: 20px;
         }
+
         th, td {
             border: 1px solid #ccc; 
-            padding: 8px; 
+            padding: 10px; 
             text-align: left;
         }
-        th { 
-            background-color: #f2f2f2; 
+
+        th {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <h1>Notes App</h1>
-    <h2>Add New Note</h2>
+    <h2 style="text-align: center;">Add New Note</h2>
     <form id="form1">
         <input type="text" id="title" placeholder="Title" required>
         <textarea id="content" placeholder="Content"></textarea>
@@ -47,7 +88,7 @@
         </thead>
         <tbody></tbody>
     </table>
-
+    <button type="submit" id="logout-btn">Logout</button>
     <script src="/script.js"></script>
 </body>
 </html>
