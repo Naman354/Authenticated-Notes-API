@@ -7,15 +7,16 @@ const userSchema = new mongoose.Schema({
     title:{
         type:String,
         required:true,
-        unique:true,
+        unique:true,    
     },
     content:{
         type:String,        
     },
     createdBy:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users',            
+        ref: 'users',        
+        required:true,    
     }
 }, {timestamps:true});
-const User = mongoose.model('User1', userSchema)
-module.exports = User;
+const Note = mongoose.model('Note', userSchema)
+module.exports = Note;

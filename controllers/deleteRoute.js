@@ -1,11 +1,14 @@
 const Note = require('../models/structure2');
 
-// Delete a note
+// Delete note
 async function deleteNote(req, res) {
   try {
-    const note = await Note.findOneAndDelete({ _id: req.params.id, createdBy: req.user._id });
-    if (!note) return res.status(404).json({ success: false, message: "Note not found or unauthorized" });
+    const note = await Note.findOneAndDelete({
+      _id: req.params.id,
+      createdBy: req.user._id, // only owner can delete
+    });
 
+    if (!note) return res.status(404).json({ success: false, message: "Note not found or not authorized" });
     res.json({ success: true, message: "Note deleted successfully" });
   } catch (err) {
     console.error(err);

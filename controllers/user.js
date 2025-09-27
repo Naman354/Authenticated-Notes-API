@@ -27,9 +27,9 @@ async function handleUserLogin(req, res) {
             error:"Invalid Email or Password"
     });
 
-    const token = setUser(user);
-    res.cookie("uid", token);
-    return res.redirect("/");
+   const token = setUser(User); // store full Mongoose doc
+res.cookie("uid", token, { httpOnly: true }); // safe cookie
+return res.redirect("/");
 }
 catch (err) {
     console.error(err);

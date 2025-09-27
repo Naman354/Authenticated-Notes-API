@@ -6,7 +6,10 @@ const notesBody = document.querySelector("#notes tbody");
 // Load all notes
 async function loadNotes() {
     try {
-        const res = await fetch(`${baseURL}`); // GET /notes
+        const res = await fetch(`${baseURL}`, {
+            method: "GET",
+            credentials: "include" // send cookies for authentication
+        });
         const data = await res.json();
 
         notesBody.innerHTML = "";
@@ -40,9 +43,10 @@ createForm.addEventListener("submit", async (e) => {
     if (!title) return alert("Title is required");
 
     try {
-        await fetch(`${baseURL}`, { // POST /notes
+        await fetch(`${baseURL}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
+            credentials: "include", // send cookies
             body: JSON.stringify({ title, content })
         });
 
@@ -61,7 +65,10 @@ notesBody.addEventListener("click", async (e) => {
     // Delete
     if (e.target.classList.contains("delete-btn")) {
         try {
-            await fetch(`${baseURL}/${id}`, { method: "DELETE" }); // DELETE /notes/:id
+            await fetch(`${baseURL}/${id}`, {
+                method: "DELETE",
+                credentials: "include" // send cookies
+            });
             loadNotes();
         } catch (err) {
             console.error("Error deleting note:", err);
@@ -80,9 +87,10 @@ notesBody.addEventListener("click", async (e) => {
         if (newContent) updates.content = newContent;
 
         try {
-            await fetch(`${baseURL}/${id}`, { // PATCH /notes/:id
+            await fetch(`${baseURL}/${id}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
+                credentials: "include", // send cookies
                 body: JSON.stringify(updates)
             });
             loadNotes();
