@@ -1,4 +1,4 @@
-const Note = require('../models/structure');
+const Note = require('../models/structure2');
 
 // Partial update of a note
 async function patchNote(req, res) {

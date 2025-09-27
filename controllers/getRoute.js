@@ -1,4 +1,4 @@
-const Note = require('../models/structure'); // your Note/User schema
+const Note = require('../models/structure2'); // your Note/User schema
 const { restrictToLoggedInUserOnly } = require('../middleware/autho');
 
 // Get all notes for logged-in user

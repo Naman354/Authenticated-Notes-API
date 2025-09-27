@@ -1,4 +1,4 @@
-const Note = require('../models/structure');
+const Note = require('../models/structure2');
 
 // Delete a note
 async function deleteNote(req, res) {

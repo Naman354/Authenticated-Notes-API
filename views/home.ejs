@@ -3,44 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD Frontend</title>
+    <title>Notes CRUD Frontend</title>
     <style>
         body {
-            font-family: Arial, sans-serif; padding: 20px; 
-            }
-            input, button { 
-                margin: 5px; 
-            }
-            table { 
-                border-collapse:collapse; width: 100%; margin-top: 20px;
-            }
-            th, td {
-                border: 1px solid #ccc; padding: 8px; text-align: left;
-            }
-            th { 
-                background-color: #f2f2f2; 
-            }
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+        }
+        input, button, textarea { 
+            margin: 5px; 
+        }
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc; 
+            padding: 8px; 
+            text-align: left;
+        }
+        th { 
+            background-color: #f2f2f2; 
+        }
     </style>
 </head>
 <body>
-    <h1>CRUD APP</h1>
-    <h2>Add New Item</h2>
+    <h1>Notes App</h1>
+    <h2>Add New Note</h2>
     <form id="form1">
-        <input type="text" id="name" placeholder="Name" required>
-        <input type="text" id="description" placeholder="Description" required>
-        <button type="submit">Add Item</button>
+        <input type="text" id="title" placeholder="Title" required>
+        <textarea id="content" placeholder="Content"></textarea>
+        <button type="submit">Add Note</button>
     </form>
 
-    <h2>All Items</h2>
-    <table id="items">
+    <h2>Your Notes</h2>
+    <table id="notes">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Description</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody></tbody>
     </table>
-    <script src="script.js"></script>
+
+    <script src="/script.js"></script>
 </body>
 </html>

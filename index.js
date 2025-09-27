@@ -1,40 +1,35 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const path = require("path");
-const userRoute = require('./routes/Routes');
-const cookieParser = require('cookie-parser')
-const {restrictToLoggedInUserOnly} = require('./middleware/autho')
-const notesRoutes = require('./routes/routes2');
+const cookieParser = require("cookie-parser");
 
-const PORT=5500;
+const userRoute = require("./routes/Routes");
+const routes2 = require("./routes/routes2"); // notes routes
+const { restrictToLoggedInUserOnly } = require("./middleware/autho");
+
+const connectDB = require("./config/database");
+
+// Connect to MongoDB **before defining routes**
+connectDB();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cookieParser()); 
-
-const db = require("./config/database");
-db();
+app.use(cookieParser());
+app.use(express.static("public"));
 
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname,"views"));  
+app.set("views", path.join(__dirname, "views"));
 
-const Note = require('./models/structure');
-
+// Homepage restricted to logged-in users
 app.get("/", restrictToLoggedInUserOnly, async (req, res) => {
-  try {
-    // Fetch all notes for the logged-in user
-    const notes = await Note.find({ createdBy: req.user._id });
-    
-    // Render homepage and pass notes and user info
-    return res.render("home", { user: req.user, notes });
-  } catch (err) {
-    console.error(err);
-    return res.status(500).send("Error loading notes");
-  }
+  res.render("home"); // your frontend will fetch notes via JS
 });
 
-
+// Use user and notes routes
 app.use("/user", userRoute);
-app.listen(PORT, ()=>{
-    console.log(`Server running at http://localhost:${PORT}`);
-})
+app.use("/notes", routes2); // all CRUD routes under /notes
+
+const PORT = 5500;
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
