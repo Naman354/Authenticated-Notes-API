@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -7,6 +8,7 @@ const userRoute = require("./routes/Routes");
 const routes2 = require("./routes/routes2"); // notes routes
 const { restrictToLoggedInUserOnly } = require("./middleware/autho");
 
+const PORT = process.env.PORT || 5500;
 const connectDB = require("./config/database");
 
 // Connect to MongoDB **before defining routes**
@@ -33,7 +35,7 @@ app.get("/logout", (req, res) => {
 app.use("/user", userRoute);
 app.use("/notes", routes2); // all CRUD routes under /notes
 
-const PORT = 5500;
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

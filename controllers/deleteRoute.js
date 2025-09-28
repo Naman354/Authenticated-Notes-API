@@ -1,11 +1,11 @@
 const Note = require('../models/structure2');
 
-// Delete note
+
 async function deleteNote(req, res) {
   try {
     const note = await Note.findOneAndDelete({
       _id: req.params.id,
-      createdBy: req.user._id, // only owner can delete
+      createdBy: req.user._id, 
     });
 
     if (!note) return res.status(404).json({ success: false, message: "Note not found or not authorized" });
