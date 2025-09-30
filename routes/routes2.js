@@ -14,7 +14,6 @@ router.use(restrictToLoggedInUserOnly);
 
 // CRUD routes (mounted at /notes in index.js)
 router.get("/", getAllNotes);           // GET /notes
-router.get("/:id", getNoteById);        // GET /notes/:id
 router.post("/", createNote);           // POST /notes
 router.put("/:id", updateNote);         // PUT /notes/:id
 router.patch("/:id", patchNote);        // PATCH /notes/:id

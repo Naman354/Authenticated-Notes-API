@@ -12,18 +12,4 @@ async function getAllNotes(req, res) {
   }
 }
 
-// Get a single note by ID (only if created by logged-in user)
-async function getNoteById(req, res) {
-  try {
-    const note = await Note.findOne({ _id: req.params.id, createdBy: req.user._id });
-    if (!note) {
-      return res.status(404).json({ success: false, message: "Note not found" });
-    }
-    res.json({ success: true, note });
-  } catch (err) {
-    console.error("Error fetching note:", err);
-    res.status(500).json({ success: false, message: "Error fetching note" });
-  }
-}
-
 module.exports = { getAllNotes, getNoteById };
