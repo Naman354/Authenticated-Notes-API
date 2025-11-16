@@ -12,4 +12,4 @@ async function getAllNotes(req, res) {
   }
 }
 
-module.exports = { getAllNotes, getNoteById };
+module.exports = { getAllNotes, };
